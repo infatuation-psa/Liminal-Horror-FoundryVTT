@@ -1,25 +1,17 @@
-# Liminal for FoundryVTT!
+# Liminal Horror for FoundryVTT!
 
-Implements basic character and item sheets for playing [Liminal](https://liminalrpg.com) by [Yochai Gal](https://newschoolrevolution.com) in Foundry VTT. Liminal is a mashup of Knave and Into The Odd, meant for Wood Fantasy settings such as Necrotic Gnome's [Dolmenwood](https://necroticgnome.com/collections/dolmenwood).
-
-The code is based on the [Electric Bastionland system](https://github.com/mvdleden/electric-bastionland-FoundryVTT/) for FoundryVTT (which in turn is based on the Into the Odd System).
+Implements basic character and item sheets for playing [Liminal](https://goblinarchives.github.io/LiminalHorror/) in Foundry VTT. Liminal Horror is a modern horror ttrpg that can adapt to a myriad of different subgenres. It’s fail forward, rules-lite chasis where you play as characters that battle against (and are changed) by the horrors that lurk in the dark. As it is a hack of Cairn, this Foundry system itself is a fork of the [Cairn System for FoundryVTT](https://github.com/yochaigal/Cairn-FoundryVTT).
 
 ## Installation - Auto Installer (Recommended)
 
 1. In the FVTT Game Systems Menu, click `Install System`
-2. Search for "Liminal" in the package search filter.
+2. Search for "Liminal Horror" in the package search filter.
 3. Allow players to "Create new Actors" in the "Configure Settings" permissions menu
 
 ## Installation - Manual - Foundry V10+
 
 1. In the FVTT Game Systems Menu, click `Install System`
-2. Enter the Manifest URL: `https://github.com/yochaigal/Liminal-FoundryVTT/releases/latest/download/system.json`
-3. Allow players to "Create new Actors" in the "Configure Settings" permissions menu
-
-## Installation - Manual - Foundry V9
-
-1. In the FVTT Game Systems Menu, click `Install System`
-2. Enter the Manifest URL: `https://github.com/yochaigal/Liminal-FoundryVTT/releases/download/0.10.25/system.json`
+2. Enter the Manifest URL: `https://github.com/infatuation-psa/Liminal-Horror-FoundryVTT/releases/latest/download/system.json`
 3. Allow players to "Create new Actors" in the "Configure Settings" permissions menu
 
 ## Contributing
