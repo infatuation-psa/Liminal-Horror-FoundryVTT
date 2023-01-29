@@ -49,7 +49,7 @@ export const rollItemMacro = async (actorId, itemId) => {
   }
 
   const roll = await evaluateFormula(item.system.damageFormula, actor.getRollData());
-  const flavor = `${game.i18n.localize("LIMINAL.Rolling")} ${item.stress && <span className="stress">stress </span>}damage with ${item.name}`;
+  const flavor = `${game.i18n.localize("LIMINAL.Rolling")} ${item.stress && '<span className="stress">stress </span>'}damage with ${item.name}`;
 
   roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor: actor }),
