@@ -45,7 +45,7 @@
             </div>
             {{/each}}
         </div>
-        <!-- Armor and gold -->
+        <!-- Armor and cash -->
         <div class="character-sheet-section-others">
             <div class="resource-counter stacked-counter">
                 <label>{{ localize 'CAIRN.Armor' }}</label>
@@ -54,9 +54,15 @@
                 </div>
             </div>
             <div class="resource-counter stacked-counter">
-                <label for="system.gold">{{ localize 'CAIRN.Gold' }}</label>
+                <label>{{ localize 'CAIRN.Stability' }}</label>
                 <div class="stacked-input-wrapper">
-                    <input type="text" name="system.gold" id="system.gold" value="{{data.system.gold}}" data-dtype="Number" />
+                    <span>{{data.system.stability}}</span>
+                </div>
+            </div>
+            <div class="resource-counter stacked-counter">
+                <label for="system.cash">{{ localize 'CAIRN.Cash' }}</label>
+                <div class="stacked-input-wrapper">
+                    <input type="text" name="system.cash" id="system.cash" value="{{data.system.cash}}" data-dtype="Number" />
                 </div>
             </div>
         </div>

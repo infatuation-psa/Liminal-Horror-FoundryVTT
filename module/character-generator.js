@@ -93,7 +93,7 @@ export const rollHitProtection = async (formula) => (await evaluateFormula(formu
  * @param {String} formula
  * @returns {Promise.<Number>}
  */
-export const rollGold = async (formula) => (await evaluateFormula(formula)).total;
+export const rollCash = async (formula) => (await evaluateFormula(formula)).total;
 
 /**
  * @param {String} formula
@@ -156,7 +156,7 @@ export const generateCharacter = async () => {
 
   const abilities = await rollAbilities(characterGenerator.ability);
   const hp = await rollHitProtection(characterGenerator.hitProtection);
-  const gold = await rollGold(characterGenerator.gold);
+  const cash = await rollCash(characterGenerator.cash);
   const name = await rollName(characterGenerator.name);
   const biography = await rollBiography(characterGenerator.biography);
   const background = await rollBackground(characterGenerator.background)
@@ -166,7 +166,7 @@ export const generateCharacter = async () => {
   return {
     name,
     hp,
-    gold,
+    cash,
     abilities,
     background,
     items: [...startingItems, ...startingGear],
@@ -192,7 +192,7 @@ const characterToActorData = (characterData) => ({
     },
     background: characterData.background,
     biography: characterData.biography,
-    gold: characterData.gold,
+    cash: characterData.cash,
   },
   items: characterData.items,
   token: {

@@ -9,6 +9,7 @@
   "CAIRN.Blast": "Blast",
   "CAIRN.BoldMeanEquipped": "(bold means equipped)",
   "CAIRN.Bulky": "Bulky",
+  "CAIRN.Cash": "Cash",
   "CAIRN.CharacterGenerator": "Create character",
   "CAIRN.CharacterRegeneratorConfirm": "Are you sure you want to delete and regenerate this character?",
   "CAIRN.CharacterRegeneratorTitle": "Delete this character and regenerate?",
@@ -22,7 +23,6 @@
   "CAIRN.Equipped": "Equipped",
   "CAIRN.Fatigue": "Fatigue",
   "CAIRN.Fail": "Fail",
-  "CAIRN.Gold": "Gold",
   "CAIRN.HitProtection": "HP",
   "CAIRN.Item": "Item",
   "CAIRN.Items": "Items",
@@ -41,6 +41,7 @@
   "CAIRN.Scars": "Got a scar",
   "CAIRN.Slots": "Slots",
   "CAIRN.Spellbook": "Spellbook",
+  "CAIRN.Stability": "Stability",
   "CAIRN.StrSave": "Must pass a STR save",
   "CAIRN.Success": "Success",
   "CAIRN.Type": "Type",
@@ -54,5 +55,5 @@
   "CAIRN.ApplyDamage": "Apply damage",
   "DEX": "DEX",
   "STR": "STR",
-  "WIL": "WIL"
+  "CTRL": "CTRL"
 }

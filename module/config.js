@@ -4,7 +4,7 @@ export const Cairn = {};
 Cairn.characterGenerator = {
   ability: "3d6",
   hitProtection: "1d6",
-  gold: "3d6",
+  cash: "3d6",
   name: {
     text: "{name} {surname}",
     items: {

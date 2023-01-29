@@ -16,7 +16,7 @@
             "value": 10,
             "max": 10
           },
-          "WIL": {
+          "CTRL": {
             "value": 10,
             "max": 10
           }
@@ -28,13 +28,14 @@
       "background": "",
       "biography": "",
       "deprived": false,
-      "gold": 0
+      "cash": 0
     },
 
     "npc": {
       "templates": ["base", "actorBase"],
       "description": "",
-      "armor": 0
+      "armor": 0,
+      "stability": 0
     },
 
     "container": {
@@ -74,7 +75,8 @@
     },
     "armor": {
       "templates": ["base", "universal", "consumable"],
-      "armor": 1
+      "armor": 1,
+      "stability": 1
     },
     "spellbook": {
       "templates": ["base", "universal"]
