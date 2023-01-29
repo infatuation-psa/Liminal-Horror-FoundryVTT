@@ -72,6 +72,14 @@
                       value="{{data.system.uses.max}}" data-dtype="Number" />
             </div>
         </div>
+        <!-- Bulky -->
+        <div class="resource-counter long-counter">
+            <label class="large-resource-label" for="system.stress">{{ localize 'LIMINAL.Stress' }}</label>
+            <div class="resource-input-wrapper">
+                <input type="checkbox" {{checked data.system.stress}} name="system.stress" id="system.stress"
+                       value="{{data.system.stress}}" data-dtype="Boolean" />
+            </div>
+        </div>
 
         <div class="item-sheet-section-tabs">
             <nav class="tabs" data-group="primary">

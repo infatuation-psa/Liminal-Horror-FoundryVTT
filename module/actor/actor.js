@@ -33,6 +33,7 @@ export class LiminalActor extends Actor {
 	 */
 	_prepareCharacterData() {
     this.system.armor = this.calcArmor();
+    this.system.stability = this.calcStability();
     this.system.slotsUsed = this.calcSlotsUsed();
     this.system.encumbered = this.system.slotsUsed >= 10;
 
@@ -43,6 +44,7 @@ export class LiminalActor extends Actor {
 
 	_prepareNpcData() {
     this.system.armor = this.calcArmor();
+    this.system.stability = this.calcStability();
 	}
 
 	_prepareContainerData() {
@@ -90,5 +92,15 @@ export class LiminalActor extends Actor {
 			.reduce((a, b) => a + b, 0);
 
     return Math.min(armor, 3);
+  }
+
+  calcStability() {
+    const stability = this.items
+			.filter((item) => ["armor", "item"].includes(item.type))
+      .filter((item) => item.system.equipped ?? false)
+			.map((item) => parseInt(item.system.stability ?? 0, 10))
+			.reduce((a, b) => a + b, 0);
+
+    return Math.min(stability, 3);
   }
 }

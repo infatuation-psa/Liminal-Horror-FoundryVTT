@@ -42,7 +42,7 @@
     display: grid;
     gap: 8px;
     grid-template-columns: 140px 1fr 1fr;
-    grid-template-rows: 140px 112px 1fr;
+    grid-template-rows: 140px 168px 1fr;
     height: 100%;
 }
 
@@ -258,7 +258,7 @@
 .slots-counter label,
 .STR-counter a,
 .DEX-counter a,
-.WIL-counter a {
+.CTRL-counter a {
     width: 50%;
 }
 
@@ -266,7 +266,7 @@
 .slots-counter .resource-input-wrapper,
 .STR-counter .resource-input-wrapper,
 .DEX-counter .resource-input-wrapper,
-.WIL-counter .resource-input-wrapper {
+.CTRL-counter .resource-input-wrapper {
     width: 50%;
 }
 
@@ -292,7 +292,7 @@
     border-radius: 0;
 }
 
-.WIL-counter {
+.CTRL-counter {
     border-radius: 0 0 5px 5px;
 }
 
@@ -400,7 +400,7 @@
 }
 
 .weapon.item-sheet-grid{
-    grid-template-rows: 46px 36px 36px 36px 36px 1fr;
+    grid-template-rows: 46px 36px 36px 36px 36px 36px 1fr;
 }
 .weapon.item-sheet-grid .item-sheet-section-tabs{
     grid-row-start: 6;

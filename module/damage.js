@@ -8,9 +8,9 @@ export class Damage {
      * @param {String[]} targets Array of Id of the targeted tokens
      * @param {Number} damage Positive number
      */
-    static applyToTargets(targets, damage) {
+    static applyToTargets(targets, damage, stress) {
         targets.forEach(target => {
-            const data = this.applyToTarget(target, damage);
+            const data = this.applyToTarget(target, damage, stress);
             this._showDetails(data);
         });
     }
@@ -21,26 +21,34 @@ export class Damage {
      * @param {*} damage Amount of damaage
      * @returns actor + old and new values
      */
-    static applyToTarget(target, damage) {
+    static applyToTarget(target, damage, stress) {
         const tokenDoc = canvas.scene.tokens.get(target);
         // Linked to Actor
         if (tokenDoc.isLinked) {
-            const armor = tokenDoc.actor.system.armor;
+            const armor = stress ? tokenDoc.actor.system.stability : tokenDoc.actor.system.armor;
+            
             const hp = tokenDoc.actor.system.hp.value;
-            const str = tokenDoc.actor.system.abilities.STR.value;
+            const stat = stress ? tokenDoc.actor.system.abilities.CTRL.value: tokenDoc.actor.system.abilities.STR.value;
 
-            let {dmg, newHp, newStr} = this._calculateHpAndStr(damage, armor, hp, str);
+            let {dmg, newHp, newStat} = this._calculateHpAndStats(damage, armor, hp, stat);
 
-            tokenDoc.actor.update({'system.hp.value': newHp, 'system.abilities.STR.value': newStr});
+            if(stress) {
+                tokenDoc.actor.update({'system.hp.value': newHp, 'system.abilities.CTRL.value': newStat});
+            } else {
+                tokenDoc.actor.update({'system.hp.value': newHp, 'system.abilities.STR.value': newStat});
+            }
 
             const actor = tokenDoc.actor;
 
-            return { actor, dmg, damage, armor, hp, str, newHp, newStr };
+            return { actor, dmg, damage, armor, hp, stat, newHp, newStat, stress };
         }
         // Synthetic actor
         else {
             let armor = tokenDoc.actorData?.system?.armor;
             if (armor === undefined) armor = tokenDoc.actor.system.armor;
+
+            let stability = tokenDoc.actorData?.system?.stability;
+            if (stability === undefined) armor = tokenDoc.actor.system.stability;
 
             let hp = tokenDoc.actorData?.system?.hp?.value;
             if (hp === undefined) hp = tokenDoc.actor.system.hp.value; 
@@ -48,12 +56,27 @@ export class Damage {
             let str = tokenDoc.actorData?.system?.abilities?.STR?.value;
             if (str === undefined) str = tokenDoc.actor.system.abilities.STR.value;
 
-            let {dmg, newHp, newStr} = this._calculateHpAndStr(damage, armor, hp, str);
-            tokenDoc.modifyActorDocument({'system.hp.value': newHp, 'system.abilities.STR.value': newStr});
+            let ctrl = tokenDoc.actorData?.system?.abilities?.CTRL?.value;
+            if (ctrl === undefined) str = tokenDoc.actor.system.abilities.CTRL.value;
+
+            let stat
+            if (stress) {
+                stat = ctrl
+            } else {
+                stat = str
+            }
+
+            let {dmg, newHp, newStat} = this._calculateHpAndStats(damage, armor, hp, stat);
+            
+            if(stress) {
+                tokenDoc.modifyActorDocument({'system.hp.value': newHp, 'system.abilities.CTRL.value': newStat});
+            } else {
+                tokenDoc.modifyActorDocument({'system.hp.value': newHp, 'system.abilities.STR.value': newStat});
+            }
 
             const actor = ( tokenDoc.actorData !== undefined ) ? tokenDoc.actorData : tokenDoc.actor
 
-            return { actor, dmg, damage, armor, hp, str, newHp, newStr };
+            return { actor, dmg, damage, armor, hp, stat, newHp, newStat, stress };
         }
     }
 
@@ -83,7 +106,8 @@ export class Damage {
         else {
             if (targets !== undefined) {
                 const dmg = parseInt(html.find(".dice-total").text());
-                this.applyToTargets(targetsList, dmg);
+                const stress = html.has(".stress");
+                this.applyToTargets(targetsList, dmg, stress);
             }
         }
     }
@@ -96,22 +120,22 @@ export class Damage {
      * @param {*} str 
      * @returns damage done, new HP value and STR value
      */
-     static _calculateHpAndStr(damage, armor, hp, str) {
+     static _calculateHpAndStats(damage, armor, hp, stat) {
         let dmg = damage - armor;
         if (dmg < 0) dmg = 0;
 
         let newHp;
-        let newStr = str;
+        let newStat = stat;
         if (dmg <= hp) { 
             newHp = hp - dmg;
             if (newHp < 0) newHp = 0;
         }
         else {
             newHp = 0;
-            newStr = str - (dmg - hp);
+            newStat = stat - (dmg - hp);
         }
 
-        return {dmg, newHp, newStr};
+        return {dmg, newHp, newStat};
     }
 
     /**
@@ -121,7 +145,7 @@ export class Damage {
      */
     static _showDetails(data) {
 
-        const { actor, dmg, damage, armor, hp, str, newHp, newStr } = data
+        const { actor, dmg, damage, armor, hp, stat, newHp, newStat, stress } = data
 
         let content = '<p><strong>' + game.i18n.localize('LIMINAL.Damage') + '</strong>: ' + dmg + ' (' + damage + '-' + armor + ')</p>'
         if (newHp !== hp) {
@@ -129,16 +153,25 @@ export class Damage {
         } else {
             content += '<p><strong>' + game.i18n.localize('LIMINAL.HitProtection') + '</strong>: ' + hp + '</p>'
         }
-        if (newStr !== str) {
-            content += '<p><strong>' + game.i18n.localize('STR') + '</strong>: <s>' + str + '</s> => ' + newStr + '</p>'
+        if (newStat !== stat) {
+            if(stress) {
+                content += '<p><strong>' + game.i18n.localize('CTRL') + '</strong>: <s>' + stat + '</s> => ' + newStat + '</p>'
+            } else {
+                content += '<p><strong>' + game.i18n.localize('STR') + '</strong>: <s>' + stat + '</s> => ' + newStat + '</p>'
+            }
         }
 
-        if (newStr < str) {
-            if (newStr === 0) {
+        if (newStat < stat) {
+            if (newStat === 0) {
                 content += '<strong>' + game.i18n.localize('LIMINAL.Dead') + '</strong>'
             } else  {
-                content += '<p><strong>' + game.i18n.localize('LIMINAL.StrSave') + '</strong></p>'
-                content += '<button type="button" class="roll-str-save">Roll STR save</button>'
+                if(stress) {
+                    content += '<p><strong>' + game.i18n.localize('LIMINAL.CtrlSave') + '</strong></p>'
+                    content += '<button type="button" class="roll-str-save">Roll CTRL save</button>'        
+                } else {
+                    content += '<p><strong>' + game.i18n.localize('LIMINAL.StrSave') + '</strong></p>'
+                    content += '<button type="button" class="roll-str-save">Roll STR save</button>'                    
+                }
             }
         } else if (newHp === 0 && hp !== 0) {
             content += '<p><strong>' + game.i18n.localize('LIMINAL.Scars') + '</strong></p>'
@@ -150,7 +183,6 @@ export class Damage {
             speaker: { actor },
             content: content,
         }, {})
-
     }
 
     static async _rollScarsTable(damage){

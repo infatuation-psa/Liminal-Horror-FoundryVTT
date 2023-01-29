@@ -51,7 +51,8 @@
         "description": "",
         "weightless": false,
         "equipped": false,
-        "bulky": false
+        "bulky": false,
+        "stress": false
         
       },
       "withDamage" : {
