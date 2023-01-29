@@ -1,122 +1,122 @@
 {
-  "id": "cairn",
-  "title": "Cairn",
-  "description": "Cairn for FoundryVTT",
+  "id": "liminal",
+  "title": "Liminal Horror",
+  "description": "Liminal Horror for FoundryVTT",
   "version": "0.10.28",
   "compatibility": {
     "minimum": "10",
     "verified": "10"
   },
   "license": "LICENSE.txt",
-  "url": "https://github.com/yochaigal/Cairn-FoundryVTT/",
-  "manifest": "https://github.com/yochaigal/Cairn-FoundryVTT/releases/latest/download/system.json",
-  "download": "https://github.com/yochaigal/Cairn-FoundryVTT/releases/latest/download/system.zip",
+  "url": "https://github.com/infatuation-psa/Liminal-Horror-FoundryVTT/",
+  "manifest": "https://github.com/infatuation-psa/Liminal-Horror-FoundryVTT/releases/latest/download/system.json",
+  "download": "https://github.com/infatuation-psa/Liminal-Horror-FoundryVTT/releases/latest/download/system.zip",
   "authors": [
     {
-      "name": "yochaigal",
-      "url": "https://yochaigal.itch.io/"
+      "name": "infatuation",
+      "url": "https://infatuation.supply/"
     }
   ],  
-  "esmodules": ["module/cairn.js"],
-  "styles": ["css/cairn.css"],
+  "esmodules": ["module/liminal.js"],
+  "styles": ["css/liminal.css"],
   "packs": [
     {
       "name": "armor",
       "label": "Armor",
       "path": "packs/armor.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "character-traits",
       "label": "Character Traits",
       "path": "packs/character-traits.db",
       "type": "RollTable",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "expeditionary-gear",
       "label": "Expeditionary Gear",
       "path": "packs/expeditionary-gear.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "extra",
       "label": "Extra",
       "path": "packs/extra.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "gear-tables",
       "label": "Gear Tables",
       "path": "packs/gear-tables.db",
       "type": "RollTable",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "character-creation-tables-srd",
       "label": "Character Creation Tables - SRD",
       "path": "packs/character-creation-tables-srd.db",
       "type": "RollTable",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "utils",
       "label": "Utils",
       "path": "packs/utils.db",
       "type": "RollTable",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "macros",
       "label": "Macros",
       "path": "packs/macros.db",
       "type": "Macro",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "monsters",
       "label": "Monsters",
       "path": "packs/monsters.db",
       "type": "Actor",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "spellbooks",
       "label": "Spellbooks",
       "path": "packs/spellbooks.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "more-spellbooks",
       "label": "More Spellbooks",
       "path": "packs/more-spellbooks.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "tools",
       "label": "Tools",
       "path": "packs/tools.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "trinkets",
       "label": "Trinkets",
       "path": "packs/trinkets.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     },
     {
       "name": "weapons",
       "label": "Weapons",
       "path": "packs/weapons.db",
       "type": "Item",
-      "system": "cairn"
+      "system": "liminal"
     }
   ],
   "scripts": [],

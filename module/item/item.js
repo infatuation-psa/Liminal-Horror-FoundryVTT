@@ -2,7 +2,7 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class CairnItem extends Item {
+export class LiminalItem extends Item {
 	/**
 	 * Augment the basic item data with additional dynamic data.
 	 */
