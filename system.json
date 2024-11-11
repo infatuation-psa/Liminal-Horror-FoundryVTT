@@ -2,7 +2,7 @@
   "id": "liminal",
   "title": "Liminal Horror",
   "description": "Liminal Horror for FoundryVTT",
-  "version": "0.10.28",
+  "version": "0.10.29",
   "compatibility": {
     "minimum": "10",
     "verified": "10"
@@ -127,8 +127,10 @@
       "path": "lang/en.json"
     }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
   "primaryTokenAttribute": "abilities.STR",
   "secondaryTokenAttribute": "hp"
 }
